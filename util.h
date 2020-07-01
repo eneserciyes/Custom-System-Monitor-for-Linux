@@ -8,6 +8,7 @@ class Util {
   static Time convertToTime(long int input_seconds);
   static std::string getProgressBar(std::string percent);
   static std::ifstream getStream(std::string path);
+  static bool isPidDir(std::string dirName);
 };
 
 Time Util::convertToTime(long int input_seconds) {
@@ -40,4 +41,8 @@ std::ifstream Util::getStream(std::string path) {
     throw std::runtime_error("Non-existing PID!!");
   }
   return stream;
+}
+
+bool Util::isPidDir(std::string dir_name) {
+  return std::all_of(dir_name.begin(), dir_name.end(), ::isdigit);
 }
